@@ -1,8 +1,11 @@
-from instrumentation_database import Instrumentation, session
+from database_setup import Session, Instrument
 
-# Fetch all records
-devices = session.query(Instrumentation).all()
+session = Session()
 
-# Display results 
-for device in devices:
-    print(f"ID: {device.id}, Name: {device.device_name}, Manufacturer: {device.manufacturer}, Model: {device.model}, Part Number: {device.part_number}")
+def fetch_data():
+    instruments = session.query(Instrument).all()
+    for instrument in instruments:
+        print(f"{instrument.id}: {instrument.device_name}: {instrument.manufacturer}: {instrument.model}: {instrument.part_number}")
+
+if __name__ == "__main__":
+    fetch_data()

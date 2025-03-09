@@ -1,13 +1,14 @@
-from instrumentation_database import Instrumentation, session
+from database_setup import Session, Instrument
 
-# Sample Data
-devices = [
-    Instrumentation(device_name= "Multimeter", manufacturer= "Fluke", model= "117", part_number= "FLK-117"),
-    Instrumentation(device_name= "Oscilloscope", manufacturer= "Tektronix", model= "TBS1104", part_number= "TEK-1104")
-]
+session = Session()
 
-# Add data to database
-session.add_all(devices)
-session.commit()
+def insert_data(device_name, manufacturer, model, part_number):
+    instrument = Instrument(device_name=device_name, manufacturer=manufacturer, model=model, part_number=part_number)
 
-print("Data inserted successfully!")
+    session.add(instrument)
+    session.commit()
+    print("Data inserted successfully!")
+
+if __name__ == "__main__":
+    insert_data("Oscilloscope", "Tektronix", "TDS2000", "12345")
+    

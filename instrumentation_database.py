@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 # Define the database (SQLite in this example)
 DATABASE_URL = "sqlite:///instrumentation.db"   # Change this for PostgreSQL or MySQL
 
+# Create a database engine ( SQLite in this example )
 engine = create_engine(DATABASE_URL, echo=True)
 
 # Base class for SQLAlchemy models
